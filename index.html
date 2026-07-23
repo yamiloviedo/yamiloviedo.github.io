@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Yamil Oviedo — club leader, coder, cybersecurity enthusiast, and hooper in Brooklyn." />
+  <!-- [EDIT] Change the page title and description above if you would like. -->
+  <title>Yamil Oviedo — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Raleway:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --accent: #167768;
+      --accent-rgb: 22, 119, 104;
+      --accent-2: #2478ad;
+      --accent-hue: 0deg;
+      --ink: #172225;
+      --muted: #5b686b;
+      --paper: #edf1ef;
+      --panel: #f9fbfa;
+      --line: rgba(23, 34, 37, .14);
+      --nav-bg: rgba(237, 241, 239, .88);
+      --shadow: 0 18px 45px rgba(22, 38, 39, .11);
+      --grid-line: rgba(23, 34, 37, .045);
+    }
+
+    body[data-theme="dark"] {
+      --ink: #f8f2f7;
+      --muted: #c5b3c4;
+      --paper: #030103;
+      --panel: #080308;
+      --line: rgba(255, 255, 255, .16);
+      --nav-bg: rgba(3, 1, 3, .9);
+      --shadow: 0 18px 45px rgba(0, 0, 0, .42);
+      --grid-line: rgba(255, 255, 255, .045);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 5.75rem; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background-color: var(--paper);
+      background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 34px 34px;
+      font-family: "Lilita One", Impact, sans-serif;
+      letter-spacing: .045em;
+      transition: color .25s ease, background-color .25s ease;
+      position: relative;
+      overflow-x: hidden;
+    }
+    body[data-theme="dark"]::before,
+    body[data-theme="dark"]::after {
+      content: "";
+      position: fixed;
+      pointer-events: none;
+      z-index: -1;
+      filter: blur(2px);
+      opacity: .85;
+    }
+    body[data-theme="dark"]::before {
+      top: -5rem;
+      left: -5rem;
+      width: 18rem;
+      height: 18rem;
+      background: radial-gradient(circle, rgba(255, 26, 183, .34) 0%, rgba(255, 26, 183, 0) 72%);
+    }
+    body[data-theme="dark"]::after {
+      right: -6rem;
+      bottom: -5rem;
+      width: 22rem;
+      height: 22rem;
+      background: radial-gradient(circle, rgba(255, 74, 120, .28) 0%, rgba(255, 74, 120, 0) 72%);
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    img { max-width: 100%; display: block; }
+    .shell { width: min(1160px, calc(100% - 2rem)); margin-inline: auto; }
+    .eyebrow { margin: 0; color: var(--accent); font-size: .96rem; letter-spacing: .14em; }
+    .section { padding: clamp(4rem, 8vw, 7.5rem) 0; }
+    .section-heading { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem; align-items: end; margin-bottom: clamp(1.8rem, 4vw, 3.2rem); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3, .nav-brand, .project-number { font-family: "Lilita One", Arial, sans-serif; letter-spacing: -.035em; }
+    h2 { font-size: clamp(2.55rem, 6vw, 5.15rem); line-height: .91; max-width: 8ch; margin-bottom: 0; text-transform: uppercase; }
+    h3 { font-size: 1.3rem; letter-spacing: -.03em; }
+    .section-note { max-width: 25ch; color: var(--muted); font-size: 1rem; line-height: 1.1; text-align: right; }
+    .rule { height: 1px; background: var(--line); margin: 0; border: 0; }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 10;
+      background: var(--nav-bg); backdrop-filter: blur(13px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { min-height: 4.6rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .nav-brand { display: inline-flex; align-items: center; justify-content: center; width: 2.2rem; height: 2.2rem; white-space: nowrap; }
+    .nav-brand img { width: 100%; height: 100%; object-fit: contain; display: block; filter: hue-rotate(var(--accent-hue)) saturate(1.35); }
+    .nav-links { display: flex; gap: clamp(.7rem, 2.2vw, 1.5rem); align-items: center; font-size: .9rem; }
+    .nav-links a { padding: .35rem 0; border-bottom: 1px solid transparent; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--accent); border-color: var(--accent); }
+    .nav-controls { display: flex; gap: .55rem; align-items: center; }
+    .swatches { display: flex; gap: .35rem; align-items: center; padding-right: .55rem; border-right: 1px solid var(--line); }
+    .swatch, .mode-toggle { appearance: none; border: 0; cursor: pointer; }
+    .swatch { width: .9rem; height: .9rem; border-radius: 50%; outline: 1px solid transparent; outline-offset: 3px; }
+    .swatch:hover, .swatch:focus-visible, .swatch[aria-pressed="true"] { outline-color: var(--ink); }
+    .swatch[data-color="green"] { background: #1db954; }
+    .swatch[data-color="blue"] { background: #2b7fff; }
+    .swatch[data-color="orange"] { background: #ff5b2d; }
+    .swatch[data-color="red"] { background: #ff355e; }
+    .swatch[data-color="purple"] { background: #8a5cff; }
+    .mode-toggle { color: var(--ink); background: transparent; min-width: 2rem; min-height: 2rem; border-radius: 50%; font-size: 1rem; }
+    .mode-toggle:hover, .mode-toggle:focus-visible { background: rgba(var(--accent-rgb), .13); }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .hero { min-height: min(780px, calc(100vh - 4.6rem)); padding: clamp(3rem, 6vw, 5rem) 0 2rem; display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(260px, .82fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: .7rem; margin-bottom: clamp(1.3rem, 3vw, 2.5rem); }
+    .chip { border: 1px solid var(--line); border-radius: 999px; padding: .38rem .68rem; color: var(--muted); font-size: .83rem; }
+    .hero h1 { font-size: clamp(4.4rem, 12vw, 10.3rem); font-weight: 900; line-height: .76; text-transform: uppercase; margin: 0; max-width: 7ch; }
+    .hero h1 em { color: var(--accent); font-style: normal; }
+    .hero-subtitle { font-family: Raleway, Arial, sans-serif; font-size: clamp(1rem, 2vw, 1.42rem); font-weight: 700; line-height: 1.2; letter-spacing: -.035em; max-width: 27ch; margin: clamp(1.5rem, 3vw, 2.8rem) 0 1.25rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 2.7rem; padding: .65rem .95rem; border: 1px solid var(--accent); background: var(--accent); color: white; font-size: .92rem; letter-spacing: .09em; transition: transform .18s ease, background .18s ease; }
+    .button:hover { transform: translateY(-2px); background: var(--accent-2); }
+    .button.secondary { color: var(--ink); border-color: var(--line); background: transparent; }
+    .button.secondary:hover { color: white; border-color: var(--accent); background: var(--accent); }
+    .visual-stack { position: relative; min-height: 390px; display: grid; align-content: center; }
+    .portrait-frame { position: relative; width: min(100%, 360px); justify-self: end; aspect-ratio: .84; padding: .8rem; border: 1.5px dashed var(--accent); background: var(--panel); box-shadow: var(--shadow); }
+    .portrait-frame img { width: 100%; height: 100%; object-fit: cover; background: repeating-linear-gradient(45deg, rgba(var(--accent-rgb), .1) 0 8px, transparent 8px 16px); }
+    .photo-label { position: absolute; bottom: 1.5rem; left: -1.35rem; padding: .53rem .66rem; background: var(--ink); color: var(--paper); font-size: .78rem; line-height: 1; transform: rotate(-5deg); }
+    .scroll-note { display: flex; gap: .5rem; align-items: center; color: var(--muted); font-size: .84rem; margin-top: clamp(2.2rem, 6vw, 5rem); }
+    .scroll-line { width: 42px; height: 1px; background: var(--accent); }
+
+    .about-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(250px, .85fr); gap: clamp(2rem, 7vw, 7rem); align-items: start; }
+    .about-copy { font-family: Raleway, Arial, sans-serif; font-weight: 600; letter-spacing: -.032em; font-size: clamp(1.28rem, 2.4vw, 2rem); line-height: 1.27; max-width: 27ch; }
+    .about-copy strong { color: var(--accent); }
+    .about-asides { display: grid; gap: .75rem; }
+    .aside-item { display: grid; grid-template-columns: 2.3rem 1fr; gap: .6rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+    .aside-item span { color: var(--accent); }
+    .aside-item p { margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.08; }
+
+    .projects-layout { display: grid; grid-template-columns: minmax(250px, .75fr) minmax(0, 1.25fr); border: 1px solid var(--line); background: var(--panel); }
+    .track-list { border-right: 1px solid var(--line); }
+    .track { width: 100%; display: grid; grid-template-columns: 2rem minmax(0, 1fr) auto; gap: .65rem; align-items: center; padding: 1rem; color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid var(--line); text-align: left; cursor: pointer; }
+    .audio-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.8rem; }
+    .audio-button { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 1rem 1.1rem; border: 1px solid rgba(var(--accent-rgb), .16); border-radius: 1.1rem; background: rgba(255, 255, 255, .14); backdrop-filter: blur(16px); color: white; cursor: pointer; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
+    body[data-theme="dark"] .audio-button { background: rgba(255, 255, 255, .08); color: white; border-color: rgba(255, 255, 255, .18); }
+    .audio-button:hover, .audio-button:focus-visible { transform: translateY(-1px); border-color: var(--accent); }
+    .audio-button.active { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(var(--accent-rgb), .16); }
+    .audio-button span:first-child { font-family: "Lilita One", Arial, sans-serif; font-size: 1rem; font-weight: 700; color: white; }
+    .audio-button span:last-child { font-size: .92rem; color: rgba(255,255,255,.75); }
+    .audio-controls { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1rem; align-items: center; margin-top: 1rem; padding: 1rem 1.1rem; border: 1px solid rgba(var(--accent-rgb), .16); border-radius: 1.1rem; background: rgba(255,255,255,.12); backdrop-filter: blur(18px); }
+    .audio-controls[hidden] { display: none !important; }
+    body[data-theme="dark"] .audio-controls { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.16); }
+    .audio-control-button { appearance: none; border: 1px solid rgba(var(--accent-rgb), .2); background: rgba(var(--accent-rgb), .12); color: white; padding: .85rem 1.15rem; border-radius: .85rem; cursor: pointer; font: inherit; transition: background .18s ease, border-color .18s ease, transform .18s ease; }
+    .audio-control-button:hover, .audio-control-button:focus-visible { background: rgba(var(--accent-rgb), .22); border-color: var(--accent); transform: translateY(-1px); }
+    .audio-volume-label { display: flex; align-items: center; gap: .75rem; color: white; font-size: .95rem; }
+    .audio-volume { width: 100%; accent: var(--accent); }
+    @media (max-width: 760px) {
+      .audio-controls { grid-template-columns: 1fr; }
+      .audio-volume-label { width: 100%; }
+    }
+    .track:last-child { border-bottom: 0; }
+    .track:hover, .track:focus-visible, .track.active { background: rgba(var(--accent-rgb), .12); }
+    .track.active { box-shadow: inset 4px 0 0 var(--accent); }
+    .track-index { color: var(--accent); font-size: .82rem; }
+    .track-title { font-family: Raleway, Arial, sans-serif; font-weight: 800; letter-spacing: -.03em; font-size: 1rem; overflow-wrap: anywhere; }
+    .track-arrow { color: var(--muted); font-size: 1.1rem; }
+    .project-panel { padding: clamp(1.45rem, 5vw, 3rem); min-height: 310px; display: flex; flex-direction: column; justify-content: space-between; }
+    .project-number { color: var(--accent); font-size: .85rem; font-weight: 800; letter-spacing: 0; }
+    .project-panel h3 { font-size: clamp(2rem, 4.8vw, 4rem); line-height: .95; margin: .8rem 0 1rem; max-width: 11ch; text-transform: uppercase; }
+    .project-panel p { color: var(--muted); font-family: Raleway, Arial, sans-serif; font-size: 1rem; font-weight: 600; letter-spacing: -.025em; line-height: 1.42; max-width: 49ch; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.2rem; }
+    .project-tags span { padding: .35rem .52rem; color: var(--accent); border: 1px solid rgba(var(--accent-rgb), .35); font-size: .75rem; }
+
+    .skills-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .skill-card { min-height: 220px; padding: clamp(1.2rem, 3vw, 1.8rem); background: var(--panel); display: flex; flex-direction: column; justify-content: space-between; }
+    .skill-card:hover { background: rgba(var(--accent-rgb), .10); }
+    .skill-mark { color: var(--accent); font-family: Raleway, Arial, sans-serif; font-size: 2rem; font-weight: 900; letter-spacing: -.1em; }
+    .skill-card h3 { text-transform: uppercase; line-height: .95; margin: 1.3rem 0 .7rem; }
+    .skill-card p { color: var(--muted); font-size: .92rem; line-height: 1.05; margin: 0; }
+
+    .contact { padding-bottom: 2rem; }
+    .contact-card { position: relative; overflow: hidden; padding: clamp(2rem, 7vw, 5.5rem); color: white; background: #182728; }
+    .contact-card::before { content: "CONNECT"; position: absolute; right: clamp(-1.5rem, -3vw, -2.2rem); bottom: clamp(-2.6rem, -4vw, -3rem); color: rgba(var(--accent-rgb), .08); font-family: "Lilita One", Arial, sans-serif; font-size: clamp(4.5rem, 12vw, 15rem); font-weight: 900; letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; max-width: calc(100% - 2rem); overflow: hidden; }
+    .contact-content { position: relative; }
+    .contact .eyebrow { color: var(--accent); }
+    .contact h2 { max-width: 10ch; color: white; margin: .6rem 0 2.5rem; }
+    .contact-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; }
+    .contact-link { display: flex; justify-content: space-between; gap: 1rem; padding: .9rem 0; border-bottom: 1px solid rgba(255,255,255,.22); font-size: clamp(.88rem, 1.9vw, 1.1rem); overflow-wrap: anywhere; }
+    .contact-link:hover { color: var(--accent); }
+    .contact-link span:last-child { color: var(--accent); }
+    footer { padding: 1.1rem 0 1.7rem; display: flex; justify-content: space-between; gap: 1rem; color: var(--muted); font-size: .82rem; }
+
+    @media (max-width: 760px) {
+      .nav { min-height: 4.15rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .visual-stack { min-height: 330px; max-width: 430px; width: 100%; justify-self: center; }
+      .portrait-frame { justify-self: center; margin-left: 1.8rem; }
+      .wave-card { left: 0; }
+      .section-heading { grid-template-columns: 1fr; }
+      .section-note { text-align: left; }
+      .about-grid, .projects-layout { grid-template-columns: 1fr; }
+      .track-list { border-right: 0; border-bottom: 1px solid var(--line); }
+      .audio-list { margin-top: 1rem; }
+      .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .contact-links { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 390px) {
+      .shell { width: min(100% - 1.25rem, 1160px); }
+      .swatches { gap: .28rem; padding-right: .4rem; }
+      .swatch { width: .78rem; height: .78rem; }
+      .portrait-frame { width: calc(100% - 1.4rem); }
+      .wave-card { width: 92%; }
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav shell" aria-label="Main navigation">
+      <!-- [EDIT] Change the small name/logo below if you want. -->
+      <a class="nav-brand" href="#home" aria-label="Home"><img src="pokeball.png" alt="" /></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-controls">
+        <div class="swatches" aria-label="Choose an accent color">
+          <!-- [EDIT] Change these swatch colors in the CSS if you want a new palette. -->
+          <button class="swatch" type="button" data-color="green" aria-label="Use green accent" aria-pressed="true"></button>
+          <button class="swatch" type="button" data-color="blue" aria-label="Use blue accent" aria-pressed="false"></button>
+          <button class="swatch" type="button" data-color="orange" aria-label="Use orange accent" aria-pressed="false"></button>
+          <button class="swatch" type="button" data-color="red" aria-label="Use red accent" aria-pressed="false"></button>
+          <button class="swatch" type="button" data-color="purple" aria-label="Use purple accent" aria-pressed="false"></button>
+        </div>
+        <button class="mode-toggle" type="button" aria-label="Switch to dark mode" title="Toggle dark mode">◐</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero shell" id="home">
+      <div>
+        <div class="hero-meta">
+          <!-- [EDIT] Update these labels to match your role/location. -->
+          <span class="chip">BROOKLYN, NY</span>
+          <span class="chip">COMMUNITY × CODE × SOUND</span>
+        </div>
+        <!-- [EDIT] Change your name and tagline here. -->
+        <h1>Yamil<br><em>Oviedo</em></h1>
+        <p class="hero-subtitle">Club Leader, Coder, Cybersecurity, Hooper — building useful systems and bringing people together.</p>
+        <div class="hero-actions">
+          <a class="button" href="#projects">See projects <span aria-hidden="true">↘</span></a>
+          <a class="button secondary" href="mailto:boundme1111m@gmail.com">Say hello</a>
+        </div>
+        <div class="scroll-note"><span class="scroll-line"></span> SCROLL TO EXPLORE</div>
+      </div>
+
+      <div class="visual-stack" aria-label="Portrait placeholder and animated sound wave">
+        <div class="portrait-frame">
+          <img src="portrait.jpg" alt="Portrait of Yamil Oviedo" />
+        </div>
+      </div>
+    </section>
+
+    <hr class="rule shell" />
+
+    <section class="section shell" id="about">
+      <div class="section-heading">
+        <div><p class="eyebrow">01 / ABOUT</p><h2>Built around people.</h2></div>
+        <p class="section-note">A little context behind the work, the sound, and the community.</p>
+      </div>
+      <div class="about-grid">
+        <!-- [EDIT] Replace this bio with your own story about how you got into making music and the music you make. -->
+        <p class="about-copy">I'm Yamil, a Brooklyn-based student and coder who likes turning ideas into things people can access and get help out of. Im into making music and playing basketball. I got into creating music after a long appreciated love for music turned into personal action, and now I make beats and am currently trying to teach myself a few instruments. I always look to help others, even when alone, and thats why I chose to lead MBK, to help the young men of our generation. Whether I'm organizing an event, writing Python, or studying cybersecurity, I’m always looking for the next way to <strong>build community.</strong></p>
+        <div class="about-asides">
+          <!-- [EDIT] Customize these three short profile notes. -->
+          <div class="aside-item"><span>01</span><p><b>Community first</b><br>Club leadership, event energy, and real collaboration.</p></div>
+          <div class="aside-item"><span>02</span><p><b>Systems mindset</b><br>Thoughtful Python projects with practical purpose.</p></div>
+          <div class="aside-item"><span>03</span><p><b>Always learning</b><br>Cybersecurity, music production, and analysis in motion.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="projects">
+      <div class="section-heading">
+        <div><p class="eyebrow">02 / RELEASES + PROJECTS</p><h2>Press play on the work.</h2></div>
+        <p class="section-note">Choose a track to hear it.</p>
+      </div>
+      <div class="projects-layout">
+        <div class="track-list" role="tablist" aria-label="Project list">
+          <!-- [EDIT] Rename or add project buttons here. Keep the data-project values unique. -->
+          <button class="track active" type="button" role="tab" aria-selected="true" data-project="medical"><span class="track-index">01</span><span class="track-title">Medical Record Project</span><span class="track-arrow">↗</span></button>
+          <button class="track" type="button" role="tab" aria-selected="false" data-project="community"><span class="track-index">02</span><span class="track-title">My Brother's Keeper</span><span class="track-arrow">↗</span></button>
+          <button class="track" type="button" role="tab" aria-selected="false" data-project="music"><span class="track-index">03</span><span class="track-title">FL Studio Experience</span><span class="track-arrow">↗</span></button>
+        </div>
+        <article class="project-panel" aria-live="polite">
+          <div>
+            <span class="project-number" id="projectNumber">01 / PYTHON</span>
+            <h3 id="projectTitle">Medical Record Project</h3>
+            <p id="projectDescription">A Python medical server where clients can enter medical information. The system saves details into lists that can be reassessed together as a complete medical record.</p>
+          </div>
+          <div class="project-tags" id="projectTags"><span>PYTHON</span><span>DATA STRUCTURES</span><span>CLIENT / SERVER</span></div>
+          <div class="audio-list" id="projectAudioList" aria-label="Audio files for this project"></div>
+          <div class="audio-controls" id="audioControls" hidden style="display:none;">
+            <button type="button" class="audio-control-button" id="audioToggleButton">Pause</button>
+            <label class="audio-volume-label">
+              Volume
+              <input id="audioVolume" class="audio-volume" type="range" min="0" max="1" step="0.01" value="0.9" aria-label="Volume control" />
+            </label>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section shell" id="skills">
+      <div class="section-heading">
+        <div><p class="eyebrow">03 / TOOLKIT</p><h2>Skills in rotation.</h2></div>
+        <p class="section-note">Technical, creative, organizational, and analytical strengths.</p>
+      </div>
+      <div class="skills-grid">
+        <!-- [EDIT] Change these skill titles and descriptions to reflect your strongest skills. -->
+        <article class="skill-card"><span class="skill-mark">01</span><div><h3>Coding in Python</h3><p>Building practical programs, working with data, and thinking through system logic.</p></div></article>
+        <article class="skill-card"><span class="skill-mark">02</span><div><h3>Music Production</h3><p>Experimenting with rhythm, texture, and ideas that turn into a sound.</p></div></article>
+        <article class="skill-card"><span class="skill-mark">03</span><div><h3>Event Organization</h3><p>Creating structure, communication, and momentum for people to show up.</p></div></article>
+        <article class="skill-card"><span class="skill-mark">04</span><div><h3>Political Analysis</h3><p>Following issues closely, asking better questions, and connecting the context.</p></div></article>
+      </div>
+    </section>
+
+    <section class="contact shell" id="contact">
+      <div class="contact-card">
+        <div class="contact-content">
+          <p class="eyebrow">04 / CONTACT</p>
+          <!-- [EDIT] Change this contact headline if you would like. -->
+          <h2>Let’s make something useful.</h2>
+          <div class="contact-links">
+            <!-- [EDIT] Replace the email address and social URLs below with your current links. -->
+            <a class="contact-link" href="mailto:boundme1111m@gmail.com"><span>boundme1111m@gmail.com</span><span>↗</span></a>
+            <a class="contact-link" href="https://github.com/yamiloviedo" target="_blank" rel="noreferrer"><span>GitHub / yamiloviedo</span><span>↗</span></a>
+            <a class="contact-link" href="https://www.linkedin.com/in/yamil-oviedo/" target="_blank" rel="noreferrer"><span>LinkedIn / Yamil Oviedo</span><span>↗</span></a>
+            <a class="contact-link" href="https://on.soundcloud.com/fSl7cPfI34L2gL4wQi" target="_blank" rel="noreferrer"><span>SoundCloud / bounded1</span><span>↗</span></a>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <!-- [EDIT] Update the year or footer line if you want. -->
+        <span>© <span id="year">2026</span> YAMIL OVIEDO</span>
+        <span>BROOKLYN / NY</span>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    // [EDIT] Change the wording, descriptions, and tags for each project here.
+    const projects = {
+      medical: {
+        number: '01 / PYTHON',
+        title: 'Medical Record Project',
+        description: 'A Python medical server where clients can enter medical information. The system saves details into lists that can be reassessed together as a complete medical record which then can be reaccessed by the client.',
+        tags: ['PYTHON', 'DATA STRUCTURES', 'CLIENT / SERVER'],
+        tracks: []
+      },
+      community: {
+        number: '02 / COMMUNITY',
+        title: 'My Brothers Keeper',
+        description: 'My Brothers Keeper is a club created by Barack Obama to unite young men and help them network and learn how properly trek through the real world while still growing up. Ive worked with the program for 4 years, and have worked on many community events, examples being nursing homes, bake sales, clothing drives, holiday galas, and more.',
+        tags: ['EVENTS', 'LEADERSHIP', 'COLLABORATION']
+      },
+      music: {
+        number: '03 / SOUND',
+        title: 'FL Studio Projects',
+        description: 'I work and make beats consistenly, most of which can be found on my soundcloud page linked in the contact page. Ive also recently had an album release called 304 with my cousins and friends.',
+        tags: ['PRODUCTION', 'RHYTHM', 'EXPERIMENT'],
+        tracks: [
+          { name: 'ja20', file: 'ja20.mp3' },
+          { name: 'jul11_Master', file: 'jul11_Master.mp3' },
+          { name: 'jul1_Master', file: 'jul1_Master.mp3' }
+        ]
+      }
+    };
+
+    const colorOptions = {
+      green: { accent: '#1db954', rgb: '29, 185, 84', accent2: '#ff355e', hue: '120deg' },
+      blue: { accent: '#2b7fff', rgb: '43, 127, 255', accent2: '#1db954', hue: '210deg' },
+      orange: { accent: '#ff5b2d', rgb: '255, 91, 45', accent2: '#ff355e', hue: '10deg' },
+      red: { accent: '#ff355e', rgb: '255, 53, 94', accent2: '#ff5b2d', hue: '0deg' },
+      purple: { accent: '#8a5cff', rgb: '138, 92, 255', accent2: '#2b7fff', hue: '280deg' }
+    };
+
+    const root = document.documentElement;
+    const body = document.body;
+    const modeToggle = document.querySelector('.mode-toggle');
+    const swatches = document.querySelectorAll('.swatch');
+
+    function setTheme(theme) {
+      body.dataset.theme = theme;
+      localStorage.setItem('yamil-theme', theme);
+      const isDark = theme === 'dark';
+      modeToggle.textContent = isDark ? '☼' : '◐';
+      modeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      modeToggle.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+    }
+
+    function setAccent(colorName) {
+      const color = colorOptions[colorName];
+      if (!color) return;
+      root.style.setProperty('--accent', color.accent);
+      root.style.setProperty('--accent-rgb', color.rgb);
+      root.style.setProperty('--accent-2', color.accent2);
+      root.style.setProperty('--accent-hue', color.hue);
+      localStorage.setItem('yamil-accent', colorName);
+      swatches.forEach((swatch) => swatch.setAttribute('aria-pressed', String(swatch.dataset.color === colorName)));
+    }
+
+    modeToggle.addEventListener('click', () => setTheme(body.dataset.theme === 'dark' ? 'light' : 'dark'));
+    swatches.forEach((swatch) => swatch.addEventListener('click', () => setAccent(swatch.dataset.color)));
+
+    const projectAudioList = document.getElementById('projectAudioList');
+    const audioControls = document.getElementById('audioControls');
+    const audioToggleButton = document.getElementById('audioToggleButton');
+    const audioVolume = document.getElementById('audioVolume');
+    let pauseHideTimer = null;
+    const audioPlayer = document.createElement('audio');
+    audioPlayer.id = 'projectAudioPlayer';
+    audioPlayer.preload = 'none';
+    document.body.appendChild(audioPlayer);
+
+    function renderAudioButtons(project) {
+      if (!project.tracks || !project.tracks.length) {
+        projectAudioList.innerHTML = '';
+        hideAudioControls();
+        return;
+      }
+      projectAudioList.innerHTML = project.tracks.map((track, index) => `
+        <button class="audio-button" type="button" data-file="${track.file}" data-track-index="${index}">
+          <span>${track.name}</span>
+          <span>Play</span>
+        </button>
+      `).join('');
+      projectAudioList.querySelectorAll('.audio-button').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const file = button.dataset.file;
+          if (!file) return;
+          audioPlayer.src = file;
+          try {
+            await audioPlayer.play();
+            projectAudioList.querySelectorAll('.audio-button').forEach((item) => item.classList.remove('active'));
+            button.classList.add('active');
+          } catch (error) {
+            console.warn('Audio playback failed:', error);
+          }
+        });
+      });
+    }
+
+    document.querySelectorAll('.track').forEach((track) => {
+      track.addEventListener('click', () => {
+        const project = projects[track.dataset.project];
+        if (!project) return;
+        document.querySelectorAll('.track').forEach((item) => {
+          const selected = item === track;
+          item.classList.toggle('active', selected);
+          item.setAttribute('aria-selected', String(selected));
+        });
+        document.getElementById('projectNumber').textContent = project.number;
+        document.getElementById('projectTitle').textContent = project.title;
+        document.getElementById('projectDescription').textContent = project.description;
+        document.getElementById('projectTags').innerHTML = project.tags.map((tag) => `<span>${tag}</span>`).join('');
+        renderAudioButtons(project);
+        if (!project.tracks || !project.tracks.length) {
+          hideAudioControls();
+        } else if (audioPlayer.paused) {
+          hideAudioControls();
+        }
+      });
+    });
+
+    function showAudioControls() {
+      if (audioPlayer.paused) return;
+      audioControls.hidden = false;
+      audioControls.style.display = 'grid';
+      if (pauseHideTimer) {
+        clearTimeout(pauseHideTimer);
+        pauseHideTimer = null;
+      }
+    }
+
+    function hideAudioControls() {
+      audioControls.hidden = true;
+      audioControls.style.display = 'none';
+      if (pauseHideTimer) {
+        clearTimeout(pauseHideTimer);
+        pauseHideTimer = null;
+      }
+    }
+
+    function hideAudioControlsAfterPause() {
+      if (pauseHideTimer) clearTimeout(pauseHideTimer);
+      pauseHideTimer = setTimeout(() => {
+        if (audioPlayer.paused) {
+          hideAudioControls();
+        }
+      }, 5000);
+    }
+
+    audioToggleButton.addEventListener('click', () => {
+      if (audioPlayer.paused) {
+        audioPlayer.play();
+      } else {
+        audioPlayer.pause();
+      }
+    });
+
+    audioVolume.addEventListener('input', () => {
+      audioPlayer.volume = Number(audioVolume.value);
+    });
+
+    audioPlayer.volume = Number(audioVolume.value);
+    audioPlayer.addEventListener('play', () => {
+      audioToggleButton.textContent = 'Pause';
+      showAudioControls();
+    });
+    audioPlayer.addEventListener('pause', () => {
+      audioToggleButton.textContent = 'Play';
+      hideAudioControlsAfterPause();
+    });
+    audioPlayer.addEventListener('ended', () => {
+      audioToggleButton.textContent = 'Play';
+      hideAudioControlsAfterPause();
+    });
+
+    const savedTheme = localStorage.getItem('yamil-theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+    setAccent(localStorage.getItem('yamil-accent') || 'green');
+    renderAudioButtons(projects.medical);
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
